@@ -10,7 +10,7 @@ public class ConxBD {
     private String base = "boolean_binary_master";
     private String url = "jdbc:mysql://localhost:3306/" + base;
     private String user = "root";
-    private String password = "12345";
+    private String password = "basededatos";
 
     // Constructor
     public ConxBD() {
@@ -97,4 +97,33 @@ public class ConxBD {
             }
         }
     }
+
+    // Método para comparar usuario y contraseña
+    public boolean verificarCredenciales(String correo, String contrasena) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean validado = false;
+        try {
+            conn = getConnection();
+            String sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, correo);
+            pstmt.setString(2, contrasena);
+            rs = pstmt.executeQuery();
+            validado = rs.next(); // Si hay algún resultado, las credenciales son válidas
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return validado;
+    }
+
 }

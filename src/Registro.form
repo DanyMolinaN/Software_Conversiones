@@ -23,6 +23,7 @@
         </constraints>
         <properties>
           <font name="Times New Roman" size="16" style="1"/>
+          <iconTextGap value="4"/>
           <text value="Nombre:"/>
         </properties>
       </component>
