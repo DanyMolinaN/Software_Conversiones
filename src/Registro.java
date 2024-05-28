@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Registro  extends JDialog{
+public class Registro  extends JFrame{
     private JPanel Jpanel_Registro;
     private JLabel name;
     private JTextField textFieldNombre;
@@ -23,13 +23,12 @@ public class Registro  extends JDialog{
     private JPasswordField ConfirmpasswordField;
     private ConxBD conexion;
 
-    public Registro(JFrame parent){
-        super(parent);
+    public Registro(){
         setTitle("Ultimate Code Development");
         setContentPane(Jpanel_Registro);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(900, 600));
-        setModal(true);
-        setLocationRelativeTo(parent);
+        setLocationRelativeTo(null);
 
         // Crear instancia de ConxBD
         conexion = new ConxBD();
@@ -45,7 +44,12 @@ public class Registro  extends JDialog{
         cancelarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                // Crear una instancia de la ventana Login y hacerlo visible
+                Login login = new Login();
+                login.setVisible(true);
+
+                // Ocultar este formulario si es necesario
+                setVisible(false);
             }
         });
         setVisible(true);

@@ -103,7 +103,8 @@ public class ConxBD {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        boolean validado = false;
+        boolean credencialesValidas = false; // Variable para almacenar el resultado de la verificación
+
         try {
             conn = getConnection();
             String sql = "SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?";
@@ -111,7 +112,23 @@ public class ConxBD {
             pstmt.setString(1, correo);
             pstmt.setString(2, contrasena);
             rs = pstmt.executeQuery();
-            validado = rs.next(); // Si hay algún resultado, las credenciales son válidas
+
+            // Verificar si hay algún resultado
+            credencialesValidas = rs.next();
+
+            // Si hay un resultado, imprimir los valores obtenidos de la base de datos
+            if (credencialesValidas) {
+                int id = rs.getInt("id");
+                String usuario = rs.getString("usuario");
+                String email = rs.getString("correo");
+                // Imprimir los valores obtenidos
+                System.out.println("ID: " + id);
+                System.out.println("Usuario: " + usuario);
+                System.out.println("correo: "+ email);
+                // Puedes imprimir otros valores aquí si los necesitas
+            } else {
+                System.out.println("No se encontraron credenciales válidas para el correo proporcionado.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -123,7 +140,7 @@ public class ConxBD {
                 e.printStackTrace();
             }
         }
-        return validado;
+        return credencialesValidas;
     }
 
 }

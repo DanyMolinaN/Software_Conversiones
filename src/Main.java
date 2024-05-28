@@ -5,6 +5,7 @@ public class Main {
         new ConxBD();
         //Ventana del registro
         //Registro RegistroForm = new Registro(null);
-        Login LoginForm = new Login(null);
+        Login LoginForm = new Login();
+        LoginForm.setVisible(true);
     }
 }

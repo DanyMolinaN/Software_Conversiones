@@ -2,51 +2,55 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import static java.sql.DriverManager.getConnection;
 
-public class Login extends JDialog {
+public class Login extends JFrame {
     private JPanel jPanelLogin;
     private JTextField txtUser;
     private JPasswordField txtPassword;
     private JButton btnIngresar;
     private JButton btnRegistrar;
+    private ConxBD conexion;
 
-    public Login(JFrame parent) {
-        super(parent);
+    public Login() {
         setTitle("Boolean Binary Master");
         setContentPane(jPanelLogin);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(400, 580));
-        //setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setModal(true);
-        setLocationRelativeTo(parent);
-        setVisible(true);
+        setLocationRelativeTo(null);
 
-        // Crear instancia de ConxBD
-        //conexion = new ConxBD();
+         //Crear instancia de ConxBD
+        conexion = new ConxBD();
 
+        //Accion de Boton iniciar sesion
         btnIngresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 inicioSesion();
             }
         });
+
+        setVisible(true);
+
+        //Accion de boton Registrarse
+        btnRegistrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Crear una instancia de la ventana Registro y hacerlo visible
+                Registro registro = new Registro();
+                registro.setVisible(true);
+
+                // Ocultar este formulario si es necesario
+                setVisible(false);
+            }
+        });
     }
 
     //Metodo de InicioSesion
     private void inicioSesion() {
-        String usuario = String.valueOf(txtUser.getText());
+        String correo = String.valueOf(txtUser.getText());
         String contrasena = String.valueOf(txtPassword.getText());
 
-        ConxBD db = new ConxBD();
-        boolean credencialesValidas = db.verificarCredenciales(usuario, contrasena);
-
-        // Actuar en consecuencia
-        if (credencialesValidas) {
-            System.out.println("Inicio de sesión exitoso para el usuario: " + usuario);
-        } else {
-            System.out.println("Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.");
-        }
-
+        conexion.verificarCredenciales(correo, contrasena);
     }
 }
