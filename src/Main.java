@@ -7,5 +7,11 @@ public class Main {
         //Registro RegistroForm = new Registro(null);
         Login LoginForm = new Login();
         LoginForm.setVisible(true);
+
+        new ConversionBinaria().inicializarInterfaz();
+
+
     }
+
+
 }
