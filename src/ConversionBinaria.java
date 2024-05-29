@@ -1,48 +1,58 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ConversionBinaria {
-    private JPanel jPanelLogin;
+public class ConversionBinaria extends JFrame {
+    private JPanel jPanel1;
     private JComboBox<String> cmbMenu;
     private JButton btnLimpiar;
     private JButton btnCalcular;
     private JTextField txtIngresar;
     private JTextField txtResultado;
+    private JPanel panel;
 
     public ConversionBinaria() {
+        setTitle("Conversion Binaria");
+        setContentPane(this.panel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(400, 580));
+        setLocationRelativeTo(null);
+        setVisible(true);
+
         // Asegúrate de que los componentes no sean null
-        if (cmbMenu != null) {
-            cmbMenu.addItem("Binario a Decimal");
-            cmbMenu.addItem("Decimal a Binario");
-            cmbMenu.addItem("Binario a Hexadecimal");
+        cmbMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarConversion();
+            }
+        });
+//        if (cmbMenu != null) {
+//            cmbMenu.addItem("Binario a Decimal");
+//            cmbMenu.addItem("Decimal a Binario");
+//            cmbMenu.addItem("Binario a Hexadecimal");
+//
+//
+//        }
 
-            cmbMenu.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    actualizarConversion();
-                }
-            });
-        }
 
-        if (btnCalcular != null) {
-            btnCalcular.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    calcularConversion();
-                }
-            });
-        }
+        btnCalcular.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcularConversion();
+            }
+        });
 
-        if (btnLimpiar != null) {
-            btnLimpiar.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    limpiarCampos();
-                }
-            });
-        }
+
+
+        btnLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limpiarCampos();
+            }
+        });
     }
+
 
     private void calcularConversion() {
         try {
@@ -157,14 +167,27 @@ public class ConversionBinaria {
         }
     }
 
-    public void inicializarInterfaz() {
-        JFrame frame = new JFrame("Conversión Binaria");
-        frame.setContentPane(this.jPanelLogin);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        // Inicializar componentes
+        panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        jPanel1 = new JPanel();
+        jPanel1.setLayout(new GridLayout(6, 1));
+
+        cmbMenu = new JComboBox<>();
+        btnLimpiar = new JButton("Limpiar");
+        btnCalcular = new JButton("Calcular");
+        txtIngresar = new JTextField();
+        txtResultado = new JTextField();
+
+        jPanel1.add(cmbMenu);
+        jPanel1.add(txtIngresar);
+        jPanel1.add(btnCalcular);
+        jPanel1.add(txtResultado);
+        jPanel1.add(btnLimpiar);
+
+        panel.add(jPanel1, BorderLayout.CENTER);
     }
+
 }

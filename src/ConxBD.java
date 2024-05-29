@@ -126,6 +126,7 @@ public class ConxBD {
                 System.out.println("Usuario: " + usuario);
                 System.out.println("correo: "+ email);
                 // Puedes imprimir otros valores aquí si los necesitas
+
             } else {
                 System.out.println("No se encontraron credenciales válidas para el correo proporcionado.");
             }

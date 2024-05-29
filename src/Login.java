@@ -51,6 +51,14 @@ public class Login extends JFrame {
         String correo = String.valueOf(txtUser.getText());
         String contrasena = String.valueOf(txtPassword.getText());
 
-        conexion.verificarCredenciales(correo, contrasena);
+        //Si las credenciales estan en la base de datos entramos a la otra ventana
+        if(conexion.verificarCredenciales(correo, contrasena)){
+            ConversionBinaria conversion = new ConversionBinaria();
+            setVisible(false);
+            conversion.setVisible(true);
+        }else {
+            System.out.println("Acceso denegado");
+        }
+        ;
     }
 }
