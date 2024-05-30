@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="AlgebraBooleana">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="584"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="8e003" binding="jPanel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="50" left="30" bottom="50" right="30"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15126949"/>
+          <maximumSize width="400" height="580"/>
+          <minimumSize width="400" height="580"/>
+          <preferredSize width="400" height="580"/>
+        </properties>
+        <border type="bevel-raised">
+          <font/>
+          <color color="-876284"/>
+        </border>
+        <children>
+          <grid id="bc0be" layout-manager="GridLayoutManager" row-count="11" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="30" left="30" bottom="30" right="30"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-15126949"/>
+            </properties>
+            <border type="none">
+              <font size="10"/>
+              <color color="-16777216"/>
+            </border>
+            <children>
+              <component id="eed1d" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-15126949"/>
+                  <font name="Microsoft JhengHei" size="20" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Calculadora de ALgebra Booleana"/>
+                </properties>
+              </component>
+              <component id="fbb0d" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Microsoft JhengHei" size="20" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Ingresar la Expresión"/>
+                </properties>
+              </component>
+              <vspacer id="cc514">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <vspacer id="a79cc">
+                <constraints>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <vspacer id="838b3">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <vspacer id="ad1b5">
+                <constraints>
+                  <grid row="9" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="4cc39" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Microsoft JhengHei" size="20" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="Simplificación de la Expresión"/>
+                </properties>
+              </component>
+              <component id="f42ad" class="javax.swing.JButton" binding="btnCalcular" custom-create="true">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-876284"/>
+                  <font name="Microsoft JhengHei" size="16" style="1"/>
+                  <margin top="1" left="10" bottom="1" right="10"/>
+                  <text value="Calcular"/>
+                </properties>
+              </component>
+              <component id="416e4" class="javax.swing.JButton" binding="btnLimpiar">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-876284"/>
+                  <font name="Microsoft JhengHei" size="16" style="1"/>
+                  <margin top="1" left="10" bottom="1" right="10"/>
+                  <text value="Limpiar"/>
+                </properties>
+              </component>
+              <component id="b0fd2" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-876284"/>
+                  <icon value="Login.png"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="4ebb9" class="javax.swing.JTextField" binding="txtIngresar">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-395521"/>
+                  <font name="Microsoft JhengHei" size="16" style="1"/>
+                </properties>
+              </component>
+              <component id="e0fed" class="javax.swing.JTextField" binding="txtResultado">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1643265"/>
+                  <font name="Microsoft JhengHei" size="16" style="1"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
