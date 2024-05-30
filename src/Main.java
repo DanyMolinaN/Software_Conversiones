@@ -7,8 +7,8 @@ public class Main {
         Login LoginForm = new Login();
         LoginForm.setVisible(true);
 
-//        ConversionBinaria conv = new ConversionBinaria();
-//        conv.setVisible(true);
+//        AlgebraBooleana algebraBooleana = new AlgebraBooleana();
+//        algebraBooleana.setVisible(true);
 
 
     }

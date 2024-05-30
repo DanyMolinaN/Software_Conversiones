@@ -1,16 +1,47 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
-public class    AlgebraBooleana {
+public class    AlgebraBooleana extends JFrame{
     private JPanel jPanel1;
     private JButton btnCalcular;
     private JButton btnLimpiar;
     private JTextField txtIngresar;
     private JTextField txtResultado;
+    private JPanel panel;
+
+    private void createUIComponents() {
+        // Inicializar componentes
+        panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        jPanel1 = new JPanel();
+        jPanel1.setLayout(new GridLayout(6, 1));
+
+        btnLimpiar = new JButton("Limpiar");
+        btnCalcular = new JButton("Calcular");
+        txtIngresar = new JTextField();
+        txtResultado = new JTextField();
+
+        jPanel1.add(txtIngresar);
+        jPanel1.add(btnCalcular);
+        jPanel1.add(txtResultado);
+        jPanel1.add(btnLimpiar);
+
+        panel.add(jPanel1, BorderLayout.CENTER);
+    }
 
     public AlgebraBooleana() {
+
+        setTitle("Algebra Booleana");
+        setContentPane(this.panel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(400, 580));
+        setLocationRelativeTo(null);
+        setVisible(true);
+
         btnCalcular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

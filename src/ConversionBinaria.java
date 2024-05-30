@@ -27,13 +27,6 @@ public class ConversionBinaria extends JFrame {
                 actualizarConversion();
             }
         });
-//        if (cmbMenu != null) {
-//            cmbMenu.addItem("Binario a Decimal");
-//            cmbMenu.addItem("Decimal a Binario");
-//            cmbMenu.addItem("Binario a Hexadecimal");
-//
-//
-//        }
 
 
         btnCalcular.addActionListener(new ActionListener() {

@@ -19,6 +19,8 @@ public class Login extends JFrame {
         setMinimumSize(new Dimension(400, 580));
         setLocationRelativeTo(null);
 
+//        createUIComponents();
+
          //Crear instancia de ConxBD
         conexion = new ConxBD();
 
@@ -61,4 +63,22 @@ public class Login extends JFrame {
         }
         ;
     }
+
+//    private void createUIComponents() {
+//        jPanelLogin = new JPanel();
+//        txtUser = new JTextField(20);
+//        txtPassword = new JPasswordField(20);
+//        btnIngresar = new JButton("Ingresar");
+//        btnRegistrar = new JButton("Registrar");
+//
+//        jPanelLogin.setLayout(new GridLayout(4, 1));
+//        jPanelLogin.add(new JLabel("Usuario:"));
+//        jPanelLogin.add(txtUser);
+//        jPanelLogin.add(new JLabel("Contraseña:"));
+//        jPanelLogin.add(txtPassword);
+//        jPanelLogin.add(btnIngresar);
+//        jPanelLogin.add(btnRegistrar);
+//
+//        setContentPane(jPanelLogin);
+//    }
 }
