@@ -11,12 +11,13 @@ public class ConversionBinaria extends JFrame {
     private JTextField txtIngresar;
     private JTextField txtResultado;
     private JPanel panel;
+    private JButton regresarButton;
 
-    public ConversionBinaria() {
+    public ConversionBinaria(String nombreusuario) {
         setTitle("Conversion Binaria");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(400, 580));
+        setMinimumSize(new Dimension(1080, 720));
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -44,7 +45,17 @@ public class ConversionBinaria extends JFrame {
                 limpiarCampos();
             }
         });
+        //Accion Regresar
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Opciones opcion  = new Opciones(nombreusuario);
+                setVisible(false);
+                opcion.setVisible(true);
+            }
+        });
     }
+
 
 
     private void calcularConversion() {
@@ -54,28 +65,28 @@ public class ConversionBinaria extends JFrame {
             String opcionSeleccionada = (String) cmbMenu.getSelectedItem();
 
             if (input.isEmpty()) {
-                txtResultado.setText("El campo de entrada está vacío.");
+                JOptionPane.showMessageDialog(null, "El campo de entrada está vacío.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             switch (opcionSeleccionada) {
                 case "Binario a Decimal":
                     if (!validarBinario(input)) {
-                        txtResultado.setText("Entrada no válida. Ingrese un número binario.");
+                        JOptionPane.showMessageDialog(null, "Entrada no válida. Ingrese un número binario.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     resultado = binarioADecimal(input);
                     break;
                 case "Decimal a Binario":
                     if (!validarDecimal(input)) {
-                        txtResultado.setText("Entrada no válida. Ingrese un número decimal.");
+                        JOptionPane.showMessageDialog(null, "Entrada no válida. Ingrese un número decimal.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     resultado = decimalABinario(input);
                     break;
                 case "Binario a Hexadecimal":
                     if (!validarBinario(input)) {
-                        txtResultado.setText("Entrada no válida. Ingrese un número binario.");
+                        JOptionPane.showMessageDialog(null, "Entrada no válida. Ingrese un número binario.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     resultado = binarioAHexadecimal(input);
@@ -86,9 +97,10 @@ public class ConversionBinaria extends JFrame {
 
             txtResultado.setText(resultado);
         } catch (NumberFormatException ex) {
-            txtResultado.setText("Error en el formato de entrada");
+            JOptionPane.showMessageDialog(null, "Error en el formato de entrada", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void actualizarConversion() {
         if (!txtIngresar.getText().isEmpty()) {

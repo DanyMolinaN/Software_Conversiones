@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Login">
-  <grid id="27dc6" binding="jPanelLogin" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="jPanelLogin" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="50" left="30" bottom="50" right="30"/>
     <constraints>
-      <xy x="113" y="24" width="415" height="603"/>
+      <xy x="41" y="72" width="1260" height="688"/>
     </constraints>
     <properties>
-      <background color="-15126949"/>
+      <background color="-16776928"/>
       <maximumSize width="400" height="580"/>
       <minimumSize width="400" height="580"/>
       <preferredSize width="400" height="580"/>
@@ -16,13 +16,13 @@
       <color color="-876284"/>
     </border>
     <children>
-      <grid id="80ab5" layout-manager="GridLayoutManager" row-count="11" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="80ab5" layout-manager="GridLayoutManager" row-count="11" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="30" left="30" bottom="30" right="30"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-15126949"/>
+          <background color="-16776928"/>
         </properties>
         <border type="none">
           <font size="10"/>
@@ -31,14 +31,14 @@
         <children>
           <component id="1851a" class="javax.swing.JTextField" binding="txtUser">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
               <background color="-1"/>
               <disabledTextColor color="-16777216"/>
-              <font name="Inter" size="16" style="0"/>
+              <font name="MS Outlook" size="16" style="0"/>
               <inheritsPopupMenu value="false"/>
               <margin top="2" left="9" bottom="2" right="6"/>
               <selectionColor color="-16777216"/>
@@ -46,14 +46,14 @@
           </component>
           <component id="eaab3" class="javax.swing.JPasswordField" binding="txtPassword">
             <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
               <background color="-1"/>
               <disabledTextColor color="-16777216"/>
-              <font name="Inter" size="16" style="0"/>
+              <font name="MS Outlook" size="16" style="0"/>
               <horizontalAlignment value="10"/>
               <margin top="2" left="9" bottom="2" right="6"/>
               <selectionColor color="-16777216"/>
@@ -61,83 +61,138 @@
           </component>
           <component id="bd239" class="javax.swing.JLabel">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-15126949"/>
-              <font name="Microsoft JhengHei" size="20" style="1"/>
+              <font name="MS Outlook" size="20" style="1"/>
               <foreground color="-1"/>
-              <text value=" Usuario"/>
+              <text value=" Email :"/>
             </properties>
           </component>
           <component id="38c3" class="javax.swing.JLabel">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font name="Microsoft JhengHei" size="20" style="1"/>
+              <font name="MS Outlook" size="20" style="1"/>
               <foreground color="-1"/>
-              <text value=" Contraseña"/>
+              <text value=" Contraseña :"/>
+            </properties>
+          </component>
+          <vspacer id="84bd5">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="4cda9" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-876284"/>
+              <icon value="logoOriginal2.jpg"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="28756" class="javax.swing.JButton" binding="btnRegistrar">
+            <constraints>
+              <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="256" height="34"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-876284"/>
+              <font name="MS Outlook" size="16" style="1"/>
+              <margin top="5" left="20" bottom="5" right="20"/>
+              <text value="Registrarse"/>
             </properties>
           </component>
           <component id="93d02" class="javax.swing.JButton" binding="btnIngresar">
             <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="261" height="34"/>
+              </grid>
             </constraints>
             <properties>
               <autoscrolls value="true"/>
               <background color="-14850650"/>
               <doubleBuffered value="false"/>
-              <font name="Microsoft JhengHei" size="16" style="1"/>
+              <font name="MS Outlook" size="16" style="1"/>
               <foreground color="-16777216"/>
               <hideActionText value="false"/>
               <margin top="5" left="0" bottom="5" right="0"/>
               <text value="Iniciar Sesion"/>
             </properties>
           </component>
-          <vspacer id="84bd5">
+          <vspacer id="9f672">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="98218">
+          <vspacer id="7ea3f">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="880d9">
+          <vspacer id="a4a31">
             <constraints>
-              <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <vspacer id="8baea">
+          <vspacer id="41158">
             <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="4cda9" class="javax.swing.JLabel">
+          <hspacer id="180e3">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="bad3a">
+            <constraints>
+              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <component id="3b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="5" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="MS Outlook" size="28" style="1"/>
+          <foreground color="-1712416"/>
+          <text value="Bienvenidos a Boolean Binary Master"/>
+        </properties>
+      </component>
+      <grid id="e04d6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16776928"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="39a39" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-876284"/>
-              <icon value="Login.png"/>
+              <icon value="app.jpeg"/>
               <text value=""/>
-            </properties>
-          </component>
-          <component id="28756" class="javax.swing.JButton" binding="btnRegistrar">
-            <constraints>
-              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-876284"/>
-              <font name="Microsoft JhengHei" size="16" style="1"/>
-              <margin top="5" left="20" bottom="5" right="20"/>
-              <text value="Crear cuenta nueva"/>
             </properties>
           </component>
         </children>
       </grid>
+      <hspacer id="1cc7b">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
     </children>
   </grid>
 </form>

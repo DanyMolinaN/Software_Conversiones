@@ -16,7 +16,7 @@ public class Login extends JFrame {
         setTitle("Boolean Binary Master");
         setContentPane(jPanelLogin);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(400, 580));
+        setMinimumSize(new Dimension(1080, 720));
         setLocationRelativeTo(null);
 
 //        createUIComponents();
@@ -50,35 +50,19 @@ public class Login extends JFrame {
 
     //Metodo de InicioSesion
     private void inicioSesion() {
-        String correo = String.valueOf(txtUser.getText());
-        String contrasena = String.valueOf(txtPassword.getText());
+        String correo = txtUser.getText();
+        String contrasena = new String(txtPassword.getPassword());
 
-        //Si las credenciales estan en la base de datos entramos a la otra ventana
-        if(conexion.verificarCredenciales(correo, contrasena)){
-            ConversionBinaria conversion = new ConversionBinaria();
+        // Si las credenciales están en la base de datos, entramos a la otra ventana
+        if (conexion.verificarCredenciales(correo, contrasena)) {
+            String nombreUsuario = conexion.obtenerNombreUsuario(correo);
+            Opciones menu = new Opciones(nombreUsuario);
             setVisible(false);
-            conversion.setVisible(true);
-        }else {
-            System.out.println("Acceso denegado");
+            menu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Acceso denegado. Verifique su correo y contraseña.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
         }
-        ;
     }
 
-//    private void createUIComponents() {
-//        jPanelLogin = new JPanel();
-//        txtUser = new JTextField(20);
-//        txtPassword = new JPasswordField(20);
-//        btnIngresar = new JButton("Ingresar");
-//        btnRegistrar = new JButton("Registrar");
-//
-//        jPanelLogin.setLayout(new GridLayout(4, 1));
-//        jPanelLogin.add(new JLabel("Usuario:"));
-//        jPanelLogin.add(txtUser);
-//        jPanelLogin.add(new JLabel("Contraseña:"));
-//        jPanelLogin.add(txtPassword);
-//        jPanelLogin.add(btnIngresar);
-//        jPanelLogin.add(btnRegistrar);
-//
-//        setContentPane(jPanelLogin);
-//    }
+
 }

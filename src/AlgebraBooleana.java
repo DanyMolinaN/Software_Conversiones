@@ -11,6 +11,7 @@ public class    AlgebraBooleana extends JFrame{
     private JTextField txtIngresar;
     private JTextField txtResultado;
     private JPanel panel;
+    private JButton regresarButton;
 
     private void createUIComponents() {
         // Inicializar componentes
@@ -33,12 +34,12 @@ public class    AlgebraBooleana extends JFrame{
         panel.add(jPanel1, BorderLayout.CENTER);
     }
 
-    public AlgebraBooleana() {
+    public AlgebraBooleana(String nombreusuario) {
 
         setTitle("Algebra Booleana");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(400, 580));
+        setMinimumSize(new Dimension(1080, 720));
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -59,6 +60,15 @@ public class    AlgebraBooleana extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 txtIngresar.setText("");
                 txtResultado.setText("");
+            }
+        });
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Opciones opcion  = new Opciones(nombreusuario);
+                setVisible(false);
+                opcion.setVisible(true);
+
             }
         });
     }

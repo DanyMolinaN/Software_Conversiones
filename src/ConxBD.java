@@ -10,7 +10,7 @@ public class ConxBD {
     private String base = "boolean_binary_master";
     private String url = "jdbc:mysql://localhost:3306/" + base;
     private String user = "root";
-    private String password = "basededatos";
+    private String password = "12345";
 
     // Constructor
     public ConxBD() {
@@ -142,6 +142,37 @@ public class ConxBD {
             }
         }
         return credencialesValidas;
+
+
     }
+    // Obtener nombre del usuario
+    public String obtenerNombreUsuario(String correo) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = getConnection();
+            String sql = "SELECT nombre FROM usuarios WHERE correo = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, correo);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("nombre");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
 
 }
