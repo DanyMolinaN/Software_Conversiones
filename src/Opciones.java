@@ -38,9 +38,7 @@ public class Opciones extends  JFrame{
         operacionesAlgebraicasBinariasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AlgebraBooleana booleana = new AlgebraBooleana(nombreUsuario);
-                setVisible(false);
-                booleana.setVisible(true);
+
             }
         });
 
@@ -48,7 +46,9 @@ public class Opciones extends  JFrame{
         simplificaciónBooleanaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                AlgebraBooleana booleana = new AlgebraBooleana(nombreUsuario);
+                setVisible(false);
+                booleana.setVisible(true);
             }
         });
 

@@ -5,10 +5,6 @@ public class Main {
         //Ventana del login
         Login LoginForm = new Login();
         LoginForm.setVisible(true);
-        //AlgebraBooleana m = new AlgebraBooleana();
-        //m.setVisible(true);
-
-
 
     }
 
