@@ -3,8 +3,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
+import java.util.Stack;
+import com.bpodgursky.jbool_expressions.Expression;
+import com.bpodgursky.jbool_expressions.And;
+import com.bpodgursky.jbool_expressions.Or;
+import com.bpodgursky.jbool_expressions.Not;
+import com.bpodgursky.jbool_expressions.Literal;
+import com.bpodgursky.jbool_expressions.rules.RuleSet;
 
-public class    AlgebraBooleana extends JFrame{
+public class AlgebraBooleana extends JFrame {
     private JPanel jPanel1;
     private JButton btnCalcular;
     private JButton btnLimpiar;
@@ -35,7 +42,6 @@ public class    AlgebraBooleana extends JFrame{
     }
 
     public AlgebraBooleana(String nombreusuario) {
-
         setTitle("Algebra Booleana");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,6 +61,7 @@ public class    AlgebraBooleana extends JFrame{
                 }
             }
         });
+
         btnLimpiar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,74 +69,91 @@ public class    AlgebraBooleana extends JFrame{
                 txtResultado.setText("");
             }
         });
+
         regresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Opciones opcion  = new Opciones(nombreusuario);
+                Opciones opcion = new Opciones(nombreusuario);
                 setVisible(false);
                 opcion.setVisible(true);
-
             }
         });
     }
+
     private boolean isValidExpression(String expression) {
         String validPattern = "^[ABC01\\s()+*']+$";
         return Pattern.matches(validPattern, expression);
     }
 
-    private String simplifyBooleanExpression(String expression) {
-        // Leyes de identidad
-        expression = expression.replace("0+A", "A");
-        expression = expression.replace("A+0", "A");
-        expression = expression.replace("1*A", "A");
-        expression = expression.replace("A*1", "A");
-
-        // Leyes de dominación
-        expression = expression.replace("1+A", "1");
-        expression = expression.replace("A+1", "1");
-        expression = expression.replace("0*A", "0");
-        expression = expression.replace("A*0", "0");
-
-        // Leyes de idempotencia
-        expression = expression.replace("A+A", "A");
-        expression = expression.replace("A*A", "A");
-
-        // Leyes de complementación
-        expression = expression.replace("A+A'", "1");
-        expression = expression.replace("A'+A", "1");
-        expression = expression.replace("A*A'", "0");
-        expression = expression.replace("A'*A", "0");
-
-        // Ley de involución
-        expression = expression.replace("(A')'", "A");
-        expression = expression.replace("(B')'", "B");
-        expression = expression.replace("(C')'", "C");
-
-        // Leyes distributivas
-        expression = expression.replace("A*(B+C)", "(A*B)+(A*C)");
-        expression = expression.replace("A+(B*C)", "(A+B)*(A+C)");
-
-        // Simplificaciones adicionales con tres variables
-        expression = expression.replace("A*(A+B)", "A");
-        expression = expression.replace("A+(A*B)", "A");
-        expression = expression.replace("A*(A'+B)", "A*B");
-        expression = expression.replace("A+(A'*B)", "A+B");
-        expression = expression.replace("(A+B)*(A+C)", "A+(B*C)");
-        expression = expression.replace("(A*B)+(A*C)", "A*(B+C)");
-
-        // Leyes de absorción
-        expression = expression.replace("A*(A+B)", "A");
-        expression = expression.replace("A+(A*B)", "A");
-
-        // Leyes de Morgan
-        expression = expression.replace("(A+B)'", "A'*B'");
-        expression = expression.replace("(A*B)'", "A'+B'");
-
-        // Complemento del complemento
-        expression = expression.replace("A''", "A");
-
-        return expression;
+    private Expression<String> parseExpression(String expression) {
+        Stack<Expression<String>> stack = new Stack<>();
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+            switch (c) {
+                case ' ':
+                    break; // Ignorar espacios
+                case 'A':
+                case 'B':
+                case 'C':
+                    stack.push(Literal.of(Boolean.parseBoolean(String.valueOf(c))));
+                    break;
+                case '0':
+                    stack.push(Literal.of(Boolean.parseBoolean("false")));
+                    break;
+                case '1':
+                    stack.push(Literal.of(Boolean.parseBoolean("true")));
+                    break;
+                case '+':
+                    if (stack.size() < 2) {
+                        throw new IllegalArgumentException("Expresión no válida: falta operandos para OR");
+                    }
+                    Expression<String> rightOr = stack.pop();
+                    Expression<String> leftOr = stack.pop();
+                    stack.push(Or.of(leftOr, rightOr));
+                    break;
+                case '*':
+                    if (stack.size() < 2) {
+                        throw new IllegalArgumentException("Expresión no válida: falta operandos para AND");
+                    }
+                    Expression<String> rightAnd = stack.pop();
+                    Expression<String> leftAnd = stack.pop();
+                    stack.push(And.of(leftAnd, rightAnd));
+                    break;
+                case '\'':
+                    if (stack.isEmpty()) {
+                        throw new IllegalArgumentException("Expresión no válida: falta operando para NOT");
+                    }
+                    stack.push(Not.of(stack.pop()));
+                    break;
+                case '(':
+                    // Ignorar, solo se usa para la estructura
+                    break;
+                case ')':
+                    // Ignorar, solo se usa para la estructura
+                    break;
+                default:
+                    throw new IllegalArgumentException("Carácter no válido en la expresión: " + c);
+            }
+        }
+        if (stack.size() != 1) {
+            throw new IllegalArgumentException("Expresión no válida");
+        }
+        return stack.pop();
     }
 
-}
+    private String simplifyBooleanExpression(String expression) {
+        try {
+            // Parsear la expresión
+            Expression<String> parsedExpression = parseExpression(expression);
 
+            // Simplificar la expresión usando jbool
+            Expression<String> simplifiedExpression = RuleSet.simplify(parsedExpression);
+
+            // Convertir la expresión simplificada a cadena y devolverla
+            return simplifiedExpression.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error al simplificar la expresión: " + e.getMessage();
+        }
+    }
+}
