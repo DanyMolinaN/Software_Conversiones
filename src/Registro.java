@@ -27,7 +27,7 @@ public class Registro  extends JFrame{
         setTitle("Ultimate Code Development");
         setContentPane(Jpanel_Registro);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1080, 720));
+        setMinimumSize(new Dimension(1920, 1080));
         setLocationRelativeTo(null);
 
         // Crear instancia de ConxBD

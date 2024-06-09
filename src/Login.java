@@ -16,7 +16,7 @@ public class Login extends JFrame {
         setTitle("Boolean Binary Master");
         setContentPane(jPanelLogin);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1080, 720));
+        setMinimumSize(new Dimension(1920, 1080));
         setLocationRelativeTo(null);
 
 //        createUIComponents();

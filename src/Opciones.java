@@ -18,7 +18,7 @@ public class Opciones extends  JFrame{
         setTitle("Boolean Binary Master");
         setContentPane(OpcionesJ);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1080, 720));
+        setMinimumSize(new Dimension(1920, 1080));
 
         // Establecer el nombre del usuario en la etiqueta EtiquetaUsuario
         Label_Nombre.setText("Bienvenido, " + nombreUsuario + "!");
@@ -38,6 +38,9 @@ public class Opciones extends  JFrame{
         operacionesAlgebraicasBinariasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                BinaryCalculator calculadora = new BinaryCalculator(nombreUsuario);
+                setVisible(false);
+                calculadora.setVisible(true);
 
             }
         });
@@ -56,6 +59,9 @@ public class Opciones extends  JFrame{
         conversionesEnIEEEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                EEECalculator calculadoraE = new EEECalculator(nombreUsuario);
+                setVisible(false);
+                calculadoraE.setVisible(true);
 
             }
         });

@@ -17,7 +17,7 @@ public class ConversionBinaria extends JFrame {
         setTitle("Conversion Binaria");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1080, 720));
+        setMinimumSize(new Dimension(1920, 1080));
         setLocationRelativeTo(null);
         setVisible(true);
 

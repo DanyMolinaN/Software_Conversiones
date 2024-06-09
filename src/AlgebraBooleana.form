@@ -85,6 +85,7 @@
                 <properties>
                   <background color="-876284"/>
                   <font name="MS Outlook" size="16" style="1"/>
+                  <foreground color="-16777216"/>
                   <margin top="1" left="10" bottom="1" right="10"/>
                   <text value="Calcular"/>
                 </properties>
@@ -94,8 +95,10 @@
                   <grid row="10" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-876284"/>
+                  <background color="-12143467"/>
                   <font name="MS Outlook" size="16" style="1"/>
+                  <foreground color="-16777216"/>
+                  <hideActionText value="true"/>
                   <margin top="1" left="10" bottom="1" right="10"/>
                   <text value="Limpiar"/>
                 </properties>
@@ -147,9 +150,9 @@
                   <grid row="12" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-1726952"/>
+                  <background color="-12826113"/>
                   <font name="MS Outlook" size="16" style="1"/>
-                  <foreground color="-12895171"/>
+                  <foreground color="-16777216"/>
                   <text value="Regresar"/>
                 </properties>
               </component>

@@ -103,7 +103,8 @@
             </constraints>
             <properties>
               <background color="-876284"/>
-              <font name="MS Outlook" size="16" style="1"/>
+              <font name="MS Outlook" size="18" style="1"/>
+              <foreground color="-16777216"/>
               <margin top="5" left="20" bottom="5" right="20"/>
               <text value="Registrarse"/>
             </properties>
@@ -116,9 +117,9 @@
             </constraints>
             <properties>
               <autoscrolls value="true"/>
-              <background color="-14850650"/>
+              <background color="-11622856"/>
               <doubleBuffered value="false"/>
-              <font name="MS Outlook" size="16" style="1"/>
+              <font name="MS Outlook" size="18" style="1"/>
               <foreground color="-16777216"/>
               <hideActionText value="false"/>
               <margin top="5" left="0" bottom="5" right="0"/>
