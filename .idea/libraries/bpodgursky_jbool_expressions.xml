@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="bpodgursky.jbool_expressions" type="repository">
+    <properties maven-id="com.bpodgursky:jbool_expressions:1.24" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jbool_expressions-1.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-runtime-3.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/jbool_expressions-1.24-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-runtime-3.5.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/jbool_expressions-1.24-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/antlr-runtime-3.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

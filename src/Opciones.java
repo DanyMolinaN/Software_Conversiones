@@ -59,7 +59,7 @@ public class Opciones extends  JFrame{
         conversionesEnIEEEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EECalculator calculadoraE = new EEECalculator(nombreUsuario);
+                EEECalculator calculadoraE = new EEECalculator(nombreUsuario);
                setVisible(false);
                 calculadoraE.setVisible(true);
 

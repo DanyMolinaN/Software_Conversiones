@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="bpodgursky.jbool_expressions">
+    <archive path="C:/Users/jotab/IdeaProjects/Software_Conversiones/lib/jbool_expressions-1.24.jar" />
+    <archive path="C:/Users/jotab/IdeaProjects/Software_Conversiones/lib/antlr-runtime-3.5.2.jar" />
+  </library>
+</eclipse-userlibraries>
+

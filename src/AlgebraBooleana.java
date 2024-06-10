@@ -40,7 +40,7 @@ public class AlgebraBooleana extends JFrame {
         setTitle("Algebra Booleana");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(800, 600));
+        setMinimumSize(new Dimension(1920, 1080));
         setLocationRelativeTo(null);
         setVisible(true);
 
