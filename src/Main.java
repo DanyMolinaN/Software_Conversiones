@@ -9,10 +9,10 @@ public class Main {
     //    op.setVisible(true);
 
         //AlgebraBooleana booleana = new AlgebraBooleana(null);
-        //booleana.setViNsible(true);
+       // booleana.setVisible(true);
 
-        //ConversionBinaria binaria = new ConversionBinaria(null);
-        //binaria.setVisible(true);
+        ConversionBinaria binaria = new ConversionBinaria(null);
+        binaria.setVisible(true);
     }
 
 

@@ -40,7 +40,7 @@ public class Opciones extends  JFrame{
             public void actionPerformed(ActionEvent e) {
                 BinaryCalculator calculadora = new BinaryCalculator(nombreUsuario);
                 setVisible(false);
-                calculadora.setVisible(true);
+               calculadora.setVisible(true);
 
             }
         });
@@ -59,8 +59,8 @@ public class Opciones extends  JFrame{
         conversionesEnIEEEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EEECalculator calculadoraE = new EEECalculator(nombreUsuario);
-                setVisible(false);
+                EECalculator calculadoraE = new EEECalculator(nombreUsuario);
+               setVisible(false);
                 calculadoraE.setVisible(true);
 
             }

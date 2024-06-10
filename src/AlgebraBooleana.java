@@ -2,13 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Pattern;
-import java.util.Stack;
-import com.bpodgursky.jbool_expressions.Expression;
-import com.bpodgursky.jbool_expressions.And;
-import com.bpodgursky.jbool_expressions.Or;
-import com.bpodgursky.jbool_expressions.Not;
-import com.bpodgursky.jbool_expressions.Literal;
+import com.bpodgursky.jbool_expressions.*;
+import com.bpodgursky.jbool_expressions.parsers.ExprParser;
 import com.bpodgursky.jbool_expressions.rules.RuleSet;
 
 public class AlgebraBooleana extends JFrame {
@@ -45,7 +40,7 @@ public class AlgebraBooleana extends JFrame {
         setTitle("Algebra Booleana");
         setContentPane(this.panel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(1920, 1080));
+        setMinimumSize(new Dimension(800, 600));
         setLocationRelativeTo(null);
         setVisible(true);
 
@@ -81,78 +76,28 @@ public class AlgebraBooleana extends JFrame {
     }
 
     private boolean isValidExpression(String expression) {
-        String validPattern = "^[ABC01\\s()+*']+$";
-        return Pattern.matches(validPattern, expression);
+        try {
+            // Intenta parsear la expresión
+            ExprParser.parse(expression);
+            return true;
+        } catch (Exception e) {
+            // Si hay un error de parseo, la expresión no es válida
+            return false;
+        }
     }
 
-    private Expression<String> parseExpression(String expression) {
-        Stack<Expression<String>> stack = new Stack<>();
-        for (int i = 0; i < expression.length(); i++) {
-            char c = expression.charAt(i);
-            switch (c) {
-                case ' ':
-                    break; // Ignorar espacios
-                case 'A':
-                case 'B':
-                case 'C':
-                    stack.push(Literal.of(Boolean.parseBoolean(String.valueOf(c))));
-                    break;
-                case '0':
-                    stack.push(Literal.of(Boolean.parseBoolean("false")));
-                    break;
-                case '1':
-                    stack.push(Literal.of(Boolean.parseBoolean("true")));
-                    break;
-                case '+':
-                    if (stack.size() < 2) {
-                        throw new IllegalArgumentException("Expresión no válida: falta operandos para OR");
-                    }
-                    Expression<String> rightOr = stack.pop();
-                    Expression<String> leftOr = stack.pop();
-                    stack.push(Or.of(leftOr, rightOr));
-                    break;
-                case '*':
-                    if (stack.size() < 2) {
-                        throw new IllegalArgumentException("Expresión no válida: falta operandos para AND");
-                    }
-                    Expression<String> rightAnd = stack.pop();
-                    Expression<String> leftAnd = stack.pop();
-                    stack.push(And.of(leftAnd, rightAnd));
-                    break;
-                case '\'':
-                    if (stack.isEmpty()) {
-                        throw new IllegalArgumentException("Expresión no válida: falta operando para NOT");
-                    }
-                    stack.push(Not.of(stack.pop()));
-                    break;
-                case '(':
-                    // Ignorar, solo se usa para la estructura
-                    break;
-                case ')':
-                    // Ignorar, solo se usa para la estructura
-                    break;
-                default:
-                    throw new IllegalArgumentException("Carácter no válido en la expresión: " + c);
-            }
-        }
-        if (stack.size() != 1) {
-            throw new IllegalArgumentException("Expresión no válida");
-        }
-        return stack.pop();
-    }
 
     private String simplifyBooleanExpression(String expression) {
         try {
-            // Parsear la expresión
-            Expression<String> parsedExpression = parseExpression(expression);
+            // Parsear la expresión desde una cadena
+            Expression<String> parsedExpression = ExprParser.parse(expression);
 
-            // Simplificar la expresión usando jbool
+            // Simplificar la expresión
             Expression<String> simplifiedExpression = RuleSet.simplify(parsedExpression);
 
-            // Convertir la expresión simplificada a cadena y devolverla
+            // Devolver solo la expresión simplificada
             return simplifiedExpression.toString();
         } catch (Exception e) {
-            e.printStackTrace();
             return "Error al simplificar la expresión: " + e.getMessage();
         }
     }

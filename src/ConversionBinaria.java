@@ -114,25 +114,61 @@ public class ConversionBinaria extends JFrame {
     }
 
     private String binarioADecimal(String binario) {
+        boolean negative = binario.startsWith("-");
+        if (negative) {
+            binario = binario.substring(1);
+        }
+
         int decimal = 0;
         for (int i = 0; i < binario.length(); i++) {
             if (binario.charAt(binario.length() - 1 - i) == '1') {
                 decimal += Math.pow(2, i);
             }
         }
-        return String.valueOf(decimal);
+
+        return negative ? "-" + decimal : String.valueOf(decimal);
     }
 
-    private String decimalABinario(String decimal) {
-        int num = Integer.parseInt(decimal);
-        StringBuilder binario = new StringBuilder();
+    private String decimalABinario(String decimalStr) {
+        try {
+            // Convertir el String a double
+            double decimal = Double.parseDouble(decimalStr);
 
-        while (num > 0) {
-            binario.insert(0, num % 2);
-            num /= 2;
+            // Verificar si es negativo
+            boolean negative = decimal < 0;
+            if (negative) {
+                decimal = -decimal;
+            }
+
+            long integerPart = (long) decimal;
+            double fractionalPart = decimal - integerPart;
+            StringBuilder binaryString = new StringBuilder();
+
+            // Añadir el signo negativo si es necesario
+            if (negative) {
+                binaryString.append("-");
+            }
+
+            // Convertir la parte entera a binario
+            binaryString.append(Long.toBinaryString(integerPart));
+
+            // Convertir la parte fraccional a binario si hay fracción
+            if (fractionalPart > 0) {
+                binaryString.append(".");
+                while (fractionalPart > 0 && binaryString.length() - binaryString.indexOf(".") < 32) {
+                    fractionalPart *= 2;
+                    long bit = (long) fractionalPart;
+                    binaryString.append(bit);
+                    fractionalPart -= bit;
+                }
+            }
+
+            return binaryString.toString();
+        } catch (NumberFormatException e) {
+            // Manejar el error si el String no puede convertirse a double
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un número decimal válido.", "Error de Entrada", JOptionPane.ERROR_MESSAGE);
+            return null;
         }
-
-        return binario.length() > 0 ? binario.toString() : "0";
     }
 
     private String binarioAHexadecimal(String binario) {
@@ -165,9 +201,22 @@ public class ConversionBinaria extends JFrame {
 
     private boolean validarDecimal(String decimal) {
         try {
-            Integer.parseInt(decimal);
+            // Intentar parsear el String como un número decimal (double)
+            Double.parseDouble(decimal);
+
+            // Verificar si el valor no es un número decimal
+            if (decimal.contains(".")) {
+                // Puede agregar más validaciones específicas para formatos esperados
+                // Por ejemplo, se puede verificar que después del punto decimal no haya más de dos dígitos
+                String[] parts = decimal.split("\\.");
+                if (parts.length > 2 || (parts.length == 2 && parts[1].length() > 2)) {
+                    return false;
+                }
+            }
+
             return true;
         } catch (NumberFormatException e) {
+            // Si ocurre una excepción de formato, el valor no es un número decimal válido
             return false;
         }
     }
